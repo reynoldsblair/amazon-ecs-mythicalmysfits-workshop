@@ -50,21 +50,12 @@ def getMysfit(mysfit_id):
 
     return flaskResponse
 
-# increment the number of likes for the provided mysfit.
-@app.route("/mysfits/<mysfit_id>/like", methods=['POST'])
-def likeMysfit(mysfit_id):
-    serviceResponse = mysfitsTableClient.likeMysfit(mysfit_id)
-    process_like_request()
-    flaskResponse = Response(serviceResponse)
-    flaskResponse.headers["Content-Type"] = "application/json"
-    return flaskResponse
-
-# @app.route("/mysfits/<mysfit_id>/fulfill-like", methods=['POST'])
-# def fulfillLikeMysfit(mysfit_id):
-#     serviceResponse = mysfitsTableClient.likeMysfit(mysfit_id)
-#     flaskResponse = Response(serviceResponse)
-#     flaskResponse.headers["Content-Type"] = "application/json"
-#     return flaskResponse
+@app.route("/mysfits/<mysfit_id>/fulfill-like", methods=['POST'])
+def fulfillLikeMysfit(mysfit_id):
+     serviceResponse = mysfitsTableClient.likeMysfit(mysfit_id)
+     flaskResponse = Response(serviceResponse)
+     flaskResponse.headers["Content-Type"] = "application/json"
+     return flaskResponse
 
 # indicate that the provided mysfit should be marked as adopted.
 @app.route("/mysfits/<mysfit_id>/adopt", methods=['POST'])
